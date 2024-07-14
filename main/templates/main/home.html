@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - StudyGate{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if user.is_authenticated %}
+    <div class="alert alert-dark" role="alert">
+        <h4 class="alert-heading">Welcome, {{ user.username }}!</h4>
+        <p class="mb-0">You are logged in.</p>
+    </div>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Welcome!</h4>
+        <p class="mb-0">Please log in to access your dashboard.</p>
+    </div>
+    {% endif %}
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Features</h5>
+                        <p>"Manage student profiles"</p>
+                        <p>"Enter grades and generate reports"</li>
+                        <p>"Assign and track homework"</p>
+                        <p>"Record and monitor student activities"</p>
+                        <p>"Efficient communication between teachers and parents"</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body ">
+                    <h5 class="card-title ">Objectives</h5>
+                <p>"Enhancing parental involvement by providing real-time updates on students' progress."</p>
+                <p>"Streamlining the grading process to ensure accuracy and efficiency in assessments."</p>
+                <p>"Facilitating seamless communication between teachers and parents to foster academic success."</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Targets</h5>
+                    <p>"Improving student engagement."</p>
+                    <p>"Enhancing parent-teacher communication."</p>
+                    <p>"Streamlining administrative tasks."</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="row mt-4">
+        <div class="col">
+            <div class="card text-center">
+                <div class="card-body bg-dark text-white">
+                    <h5 class="card-title">Join Us Today!</h5>
+                    <p class="card-text">Book a demo now to see what our app offers and start managing your students' academic progress with ease.</p>
+<a href="mailto:tinashenavonika@gmail.com?subject=StudyGate%20Demo%20Request" class="btn btn-info">BOOK DEMO</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

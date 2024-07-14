@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Communication Details{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3 class="card-title">Communication Details</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Teacher: {{ communication.teacher }}</h5>
+                    <p class="card-text">Message: {{ communication.message }}</p>
+                    <p class="card-text">Date: {{ communication.date }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

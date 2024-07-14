@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Parent Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body text-center bg-dark text-white">
+    
+               
+                    <h1 class="card-title">{{ user.username }}'s Parent Dashboard</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body bg-dark text-white">
+                    <h2>Your Children</h2>
+                    <ul class="list-group text-dark">
+                        {% for child in children %}
+                            <li class="list-group-item text-dark">
+                                {{ child.first_name }} {{ child.last_name }}
+                                <a href="{% url 'view_child_profile' child.id %}" class="btn btn-info btn-sm float-right">View Profile</a>
+                            </li>
+                        {% empty %}
+                            <li class="list-group-item">No children found.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if user.is_authenticated %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Welcome, {{ user.username }}!</h4>
+        <p class="mb-0">You are logged in.</p>
+    </div>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Welcome!</h4>
+        <p class="mb-0">Please sign up to access your dashboard.</p>
+    </div>
+    {% endif %}
+</div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">Signup</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" style="width: 100%;">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-dark btn-block mt-3">Signup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

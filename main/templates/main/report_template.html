@@ -1,0 +1,100 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+
+    .report-card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 30px;
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .report-card h1 {
+        color: #333;
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .report-card h2 {
+        color: #555;
+        font-size: 20px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    .report-card p {
+        color: #666;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .report-card table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+    }
+
+    .report-card th, .report-card td {
+        border: 1px solid #ccc;
+        padding: 12px;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    .report-card th {
+        background-color: #f0f0f0;
+    }
+
+    .report-card .footer {
+        text-align: center;
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid #ccc;
+        color: #888;
+        font-size: 14px;
+    }
+</style>
+{% load static %}
+
+<div class="report-card">
+    <!-- Removed school logo -->
+    
+    <h1>Report Card for {{ student.first_name }} {{ student.last_name }}</h1>
+    <p>Date: {{ report_date|date:"d-m-Y" }}</p>
+
+    <!-- <p>Parent Email: {{ student.parent_email }}</p>  -->
+    <h2>Grades</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Grade (%)</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grade in grades %}
+                <tr>
+                    <td>{{ grade.subject }}</td>
+                    <td>{{ grade.grade }}</td>
+                    <td>{{ grade.comments }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <!-- Removed principal's signature -->
+    
+    <div class="footer">
+        <p>&copy; StudyGate. All rights reserved.</p>
+    </div>
+</div>
+
