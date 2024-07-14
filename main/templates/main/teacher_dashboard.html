@@ -19,7 +19,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Dashboard</h1>
-        <a href="{% url 'add_student' %}" class="btn btn-success">Add Student</a>
+        <a href="{% url 'add_student' %}" class="btn btn-info">Add Student</a>
     </div>
 
     <!-- Tabs Navigation -->
@@ -48,8 +48,8 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{ student.first_name }} {{ student.last_name }}
                         <span>
-                            <a href="{% url 'add_grade' student.id %}" class="btn btn-primary btn-sm">Add Grade</a> 
-                            <a href="{% url 'generate_report' student.id %}" class="btn btn-secondary btn-sm">Generate Report</a>
+                            <a href="{% url 'add_grade' student.id %}" class="btn btn-info btn-sm">Add Grade</a> 
+                            <a href="{% url 'generate_report' student.id %}" class="btn btn-dark btn-sm">Generate Report</a>
                         </span>
                     </li>
                 {% endfor %}
@@ -63,7 +63,7 @@
                 {% for hw in homeworks %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{ hw.student.first_name }} {{ hw.student.last_name }} - {{ hw.subject }}: {{ hw.description }} (Due: {{ hw.due_date }})
-                        <a href="{% url 'view_homework' hw.id %}" class="btn btn-primary btn-sm">View Homework</a>
+                        <a href="{% url 'view_homework' hw.id %}" class="btn btn-info btn-sm">View Homework</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -71,7 +71,7 @@
             <form method="post">
                 {% csrf_token %}
                 {{ homework_form.as_p }}
-                <button type="submit" class="btn btn-success">Add Homework</button>
+                <button type="submit" class="btn btn-info">Add Homework</button>
             </form>
         </div>
 
@@ -82,7 +82,7 @@
                 {% for activity in activities %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{ activity.student.first_name }} {{ activity.student.last_name }} - {{ activity.description }} (Date: {{ activity.date }})
-                        <a href="{% url 'view_activity' activity.id %}" class="btn btn-primary btn-sm">View Activity</a>
+                        <a href="{% url 'view_activity' activity.id %}" class="btn btn-info btn-sm">View Activity</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -90,7 +90,7 @@
             <form method="post">
                 {% csrf_token %}
                 {{ activity_form.as_p }}
-                <button type="submit" class="btn btn-success">Add Activity</button>
+                <button type="submit" class="btn btn-info">Add Activity</button>
             </form>
         </div>
 
@@ -101,7 +101,7 @@
                 {% for comm in communications %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{ comm.student.first_name }} {{ comm.student.last_name }} - {{ comm.message }} ({{ comm.date }})
-                        <a href="{% url 'view_communication' comm.id %}" class="btn btn-primary btn-sm">View Communication</a>
+                        <a href="{% url 'view_communication' comm.id %}" class="btn btn-info btn-sm">View Communication</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -109,7 +109,7 @@
             <form method="post">
                 {% csrf_token %}
                 {{ communication_form.as_p }}
-                <button type="submit" class="btn btn-success">Add Communication</button>
+                <button type="submit" class="btn btn-info">Add Communication</button>
             </form>
         </div>
     </div>
