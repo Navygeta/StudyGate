@@ -11,6 +11,27 @@ class GradeForm(forms.ModelForm):
         model = Grade
         fields = ['subject', 'grade', 'comments']
 
+"""
+class GradeForm(forms.ModelForm):
+    # Define choices for subjects
+    SUBJECT_CHOICES = [
+        ('Mathematics', 'Mathematics'),
+        ('English', 'English Language Arts'),
+        ('Science', 'Science'),
+        ('Social_studies', 'Social Studies'),
+        ('Physical_education', 'Physical Education'),
+        ('Art', 'Art'),
+        ('Music', 'Music'),
+    ]
+
+    # Add subject field with choices
+    subject = forms.ChoiceField(choices=SUBJECT_CHOICES, label='Subject')
+    
+    class Meta:
+        model = Grade
+        fields = ['subject', 'grade', 'comments']
+"""
+
 class TeacherForm(forms.ModelForm):
     class Meta:
         model = Teacher

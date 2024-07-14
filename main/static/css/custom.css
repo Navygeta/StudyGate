@@ -1,0 +1,31 @@
+/* Custom CSS for the footer */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure full height of viewport */
+            margin: 0;
+            padding: 0;
+            position: relative; /* Ensure footer stays at the bottom */
+        }
+
+        .main-content {
+            flex: 1; /* Expand to fill remaining space */
+            overflow-y: auto; /* Add vertical scrollbar if content overflows */
+            padding-bottom: 80px; /* Ensure space below content for footer */
+        }
+
+        /* Sticky footer */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+ /* Center the text within the footer */
+        .footer .container {
+            display: flex;
+            justify-content: center;
+        }

@@ -7,7 +7,8 @@ from .forms import StudentForm, GradeForm, TeacherForm, HomeworkForm, ActivityFo
 from .models import Student, Grade, Homework, Activity, Communication, Teacher, Parent
 from .tasks import send_email_task
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django import forms 
+from django import forms
+from django.forms import formset_factory 
 from django.contrib.auth import logout as django_logout
 from django.urls import reverse
 import pdfkit
@@ -136,6 +137,39 @@ def add_grade(request, student_id):
         form = GradeForm()
     return render(request, 'main/add_grade.html', {'form': form, 'student': student})
 
+"""
+@login_required
+def add_grade(request, student_id):
+    student = get_object_or_404(Student, id=student_id)
+
+    # Create a formset for GradeForm
+    GradeFormSet = formset_factory(GradeForm, extra=0)
+
+    if request.method == 'POST':
+        formset = GradeFormSet(request.POST)
+        if formset.is_valid():
+            instances = []
+            for form in formset:
+                # Retrieve cleaned data from each form in formset
+                grade = form.cleaned_data.get('grade')
+                comments = form.cleaned_data.get('comments')
+                subject = form.cleaned_data.get('subject')
+
+                # Create Grade instance for each form in formset
+                instance = Grade(student=student, subject=subject, grade=grade, comments=comments)
+                instances.append(instance)
+
+            # Save all instances using bulk_create
+            Grade.objects.bulk_create(instances)
+
+            return redirect('dashboard')  # Redirect to dashboard after saving
+    else:
+        # Populate initial data for the formset with subjects
+        initial_data = [{'subject': subject[0]} for subject in GradeForm.SUBJECT_CHOICES]
+        formset = GradeFormSet(initial=initial_data)
+
+    return render(request, 'main/add_grade.html', {'formset': formset, 'student': student})
+"""
 
 @login_required
 def update_profile(request):
